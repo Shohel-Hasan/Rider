@@ -92,16 +92,31 @@ WSGI_APPLICATION = 'researchrider.wsgi.application'
 #     }
 # }
 
+# ------------------------- Database settings ---------------------
+
 DATABASES = {
     'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME':  env('DB_NAME'),
-        'USER' : env('DB_USER'),
-        'PASSWORD' : env('DB_PASSWORD'),
-        'HOST' : env('DB_HOST'),
-        'PORT' : env('DB_PORT'),
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME':  "researchriderdb",
+        'USER' : "postgres",
+        'PASSWORD' : "researchriderit",
+        'HOST' : "researchriderdb.ce7ck5x0fm1x.us-west-1.rds.amazonaws.com",
+        'PORT' : 5432,
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': env('DB_ENGINE'),
+#         'NAME':  env('DB_NAME'),
+#         'USER' : env('DB_USER'),
+#         'PASSWORD' : env('DB_PASSWORD'),
+#         'HOST' : env('DB_HOST'),
+#         'PORT' : env('DB_PORT'),
+#     }
+# }
+
+# --------------------------------- Database Setting -----------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -127,20 +142,23 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'researchriderit@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Aaronbangla24685'
+# -------------------------- Email settings -----------------------------
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'researchriderit@gmail.com'
+EMAIL_HOST_PASSWORD = 'Bubt24685'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = env('EMAIL_HOST')
+# EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+# EMAIL_PORT = env('EMAIL_PORT')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+# --------------------------- End of Email settings ------------------------
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -198,13 +216,23 @@ REST_FRAMEWORK = {
 
 # heroku
 # django_heroku.settings(locals())
+# --------------------------- S3 file storage --------------------------
+DEFAULT_FILE_STORAGE="storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID="AKIAWTYPUUHPKER5U6IM"
+AWS_SECRET_ACCESS_KEY="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"
+AWS_STORAGE_BUCKET_NAME="researchrider"
+AWS_S3_FILE_OVERWRITE=False
+AWS_DEFAULT_ACL=None
 
-DEFAULT_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_FILE_OVERWRITE = env('AWS_S3_FILE_OVERWRITE')
-AWS_DEFAULT_ACL = env('AWS_DEFAULT_ACL')
+# DEFAULT_FILE_STORAGE = env('DEFAULT_FILE_STORAGE')
+# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_FILE_OVERWRITE = env('AWS_S3_FILE_OVERWRITE')
+# AWS_DEFAULT_ACL = env('AWS_DEFAULT_ACL')
+
+# ---------------------------- End S3 Storage --------------------------
+
 
 # HTTPS
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
