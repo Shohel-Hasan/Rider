@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'researchrider.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql",
-        'NAME':  "researchriderdb",
-        'USER' : "postgres",
-        'PASSWORD' : "researchriderit",
-        'HOST' : "researchriderdb.ce7ck5x0fm1x.us-west-1.rds.amazonaws.com",
+        'NAME':  "researchriderDb",
+        'USER' : "researchriderDb",
+        'PASSWORD' : "researchriderDb",
+        'HOST' : "rrdb.ce7ck5x0fm1x.us-west-1.rds.amazonaws.com",
         'PORT' : 5432,
     }
 }
